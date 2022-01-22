@@ -1,0 +1,31 @@
+@import "colors";
+
+.header {
+    position: fixed;
+    width: 100%;
+    padding: 2rem 3rem;
+    top: 0;
+    background-color: rgba(200, 200, 200, 0.2);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+.right {
+    float: right;
+}
+
+.link {
+    margin-left: 2rem;
+    text-decoration: none;
+    background-image: linear-gradient($accent1, $accent2);
+    background-size: 0% 0.2rem;
+    background-position-y: 100%;
+    background-position-x: 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.2s ease-in-out;
+}
+
+.link:hover, .link:focus, .link:active {
+    background-size: 100% 0.2rem;
+    background-position-x: 0%;
+}
