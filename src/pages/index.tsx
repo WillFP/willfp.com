@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import { Heading } from '@chakra-ui/react'
 import Head from 'next/head'
 import IndexContent from '../components/IndexContent'
+import Footer from '../components/Footer'
 
 const Home: NextPage = () => {
   return (
@@ -12,8 +13,11 @@ const Home: NextPage = () => {
         <title>Will FP</title>
       </Head>
 
-      <Header/>
-      <IndexContent/>
+      <Header />
+      <div className={styles.content}>
+        <IndexContent />
+      </div>
+      <Footer />
     </div>
   )
 }

@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.scss"
 
 const IndexContent: FC = () => {
     return (
-        <div className={styles.content}>
+        <>
             <h1>
                 Hi, I'm Will FP.
             </h1>
@@ -49,7 +49,7 @@ const IndexContent: FC = () => {
             a <br/>
             a <br/>
             a <br/>
-        </div>
+        </>
     )
 }
 
