@@ -1,6 +1,5 @@
 {
-  "name": "test",
-  "private": true,
+  "name": "willfp.com",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
