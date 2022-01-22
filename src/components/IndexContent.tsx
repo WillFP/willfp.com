@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.scss"
 const IndexContent: FC = () => {
     return (
         <>
-            <h1>
+            <h1 className="text-3xl font-bold">
                 Hi, I'm Will FP.
             </h1>
             <p>
