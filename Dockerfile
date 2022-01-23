@@ -2,7 +2,7 @@
 FROM node:alpine
 
 # Set working directory
-WORKDIR /home/container
+WORKDIR /usr/app
 
 # Copy package.json and package-lock.json before other files
 # Utilise Docker cache to save re-installing dependencies if unchanged
