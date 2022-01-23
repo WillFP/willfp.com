@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import PageWrapper from '../components/PageWrapper'
 
-const Home: NextPage = () => {
+const Contact: NextPage = () => {
   return (
     <PageWrapper>
 
@@ -9,4 +9,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Contact
