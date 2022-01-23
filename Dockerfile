@@ -1,23 +1,34 @@
-FROM node:lts as dependencies
-WORKDIR /my-project
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+# Base on offical Node.js Alpine image
+FROM node:alpine
 
-FROM node:lts as builder
-WORKDIR /my-project
-COPY . .
-COPY --from=dependencies /my-project/node_modules ./node_modules
-RUN yarn build
+# Set working directory
+WORKDIR /usr/app
 
-FROM node:lts as runner
-WORKDIR /my-project
-ENV NODE_ENV production
-# If you are using a custom next.config.js file, uncomment this line.
-# COPY --from=builder /my-project/next.config.js ./
-COPY --from=builder /my-project/public ./public
-COPY --from=builder /my-project/.next ./.next
-COPY --from=builder /my-project/node_modules ./node_modules
-COPY --from=builder /my-project/package.json ./package.json
+# Install PM2 globally
+RUN npm install --global pm2
 
+# Copy package.json and package-lock.json before other files
+# Utilise Docker cache to save re-installing dependencies if unchanged
+COPY ./package*.json ./
+
+
+# Install dependencies
+RUN npm install --production
+
+# Copy all files
+COPY ./ ./
+
+ENV NODE_ENV=production
+
+# Build app
+RUN npm run build
+
+# Expose the listening port
 EXPOSE 3000
-CMD ["yarn", "start"]
+
+# Run container as non-root (unprivileged) user
+# The node user is provided in the Node.js Alpine base image
+USER node
+
+# Run npm start script with PM2 when container starts
+CMD [ "pm2-runtime", "npm", "--", "start" ]
