@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Head from 'next/head'
 import ThemeToggle from './ThemeToggle'
-import Link from "next/link";
+import NavbarLink from "./NavbarLink";
 
 const PageWrapper: FC<{}> = props => {
     return (
@@ -21,18 +21,10 @@ const PageWrapper: FC<{}> = props => {
                 <div className='px-10'>
                     <ul>
                         <li>
-                            <Link href="/projects">
-                                <a className='hover:font-bold transition duration-200 border-b-4 border-transparent hover:border-teal-500'>
-                                    Projects
-                                </a>
-                            </Link>
+                            <NavbarLink name="Projects" link="projects" />
                         </li>
                         <li>
-                            <Link href="/contact">
-                                <a className='hover:font-bold transition duration-200 border-b-4 border-transparent hover:border-teal-500'>
-                                    Contact
-                                </a>
-                            </Link>
+                            <NavbarLink name="Contact" link="contact" />
                         </li>
                         <li>
                             <ThemeToggle />
