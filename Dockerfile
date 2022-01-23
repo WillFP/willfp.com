@@ -11,9 +11,9 @@ RUN npm install --global pm2
 # Utilise Docker cache to save re-installing dependencies if unchanged
 COPY ./package*.json ./
 
-
 # Install dependencies
-RUN npm install --production
+RUN npm install && \
+    npm cache clean --force
 
 # Copy all files
 COPY ./ ./
