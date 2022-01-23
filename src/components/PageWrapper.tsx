@@ -19,7 +19,7 @@ const PageWrapper: FC<{}> = props => {
                                 width={64}
                                 height={64}
                                 className="object-contain w-64 h-64 rounded-full relative"
-                                src={require('../styles/assets/auxilor.jpeg')}
+                                src={require('../public/auxilor.jpeg')}
                                 alt="Auxilor Logo"
                             />
                         </div>
