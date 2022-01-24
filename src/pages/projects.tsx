@@ -1,6 +1,5 @@
 import type { GetStaticPropsResult, NextPage } from 'next'
 import PageWrapper from '../components/PageWrapper'
-import "react-gh-repo-cards/dist/index.css";
 import axios, { AxiosResponse } from 'axios';
 import { env } from 'process';
 import RepoCard, { Repository } from '../components/RepoCard'
@@ -12,9 +11,11 @@ interface ProjectsProps {
 const Projects: NextPage<ProjectsProps> = (props: ProjectsProps) => {
   return (
     <PageWrapper>
-      <h1 className='text-3xl font-extrabold font-sans'>My GitHub Repositories</h1>
-      {props.repos.map(repo => <RepoCard repo={repo} key='what' />)}
-      {props.repos.sort(repo => repo.stargazers_count).map((repo) => repo.name).join(", ")}
+      <h1 className='text-3xl font-extrabold font-sans mb-4'>My GitHub Repositories</h1>
+      <div className='grid grid-cols-3 gap-4'>
+        {props.repos.sort((a, b) => b.stargazers_count === a.stargazers_count ? b.forks_count - a.forks_count : b.stargazers_count - a.stargazers_count)
+          .map(repo => <RepoCard repo={repo} key={repo.name} />)}
+      </div>
     </PageWrapper>
   )
 }
@@ -30,10 +31,9 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<ProjectsPro
       }
     }).then((response: AxiosResponse) => {
       repositories.push(...response.data)
+    }).catch((error: any) => {
+      console.error(error)
     })
-      .catch((error: any) => {
-        console.error(error)
-      })
   }
 
   return {
