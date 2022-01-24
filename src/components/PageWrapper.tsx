@@ -12,7 +12,7 @@ const PageWrapper: FC = props => {
                 <title>Will FP</title>
             </Head>
 
-            <div className="basis-1/12 text-center px-16 bg-gray-100/25 drop-shadow-sm h-100">
+            <div className="basis-1/12 text-center px-16 bg-gray-500/5 drop-shadow-sm h-100">
                 <div className="sticky top-12">
                     <div className="my-2">
                         <Link href="../" passHref={true}>
