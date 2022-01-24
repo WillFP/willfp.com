@@ -1,5 +1,6 @@
 {
   "name": "willfp.com",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -8,6 +9,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.2",
+    "axios": "^0.25.0",
     "next": "12.0.8",
     "next-themes": "^0.0.15",
     "postcss": "^8.4.5",

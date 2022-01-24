@@ -34,7 +34,7 @@ const PageWrapper: FC<{}> = props => {
 
                 <div className='pl-10 py-4 basis-3/4'>
                     <div className='container mx-auto py-4 flex flex-row'>
-                        <div className='basis-1/12'>
+                        <div className='basis-1/12 mr-10'>
                             <ul>
                                 <li>
                                     <NavbarLink name="Home" link="../" />
@@ -51,7 +51,7 @@ const PageWrapper: FC<{}> = props => {
                             </ul>
                         </div>
 
-                        <div className='ml-10 basis-11/12'>
+                        <div className='basis-11/12'>
                             {props.children}
                         </div>
                     </div>
