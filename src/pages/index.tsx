@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import Link from 'next/link'
 import PageWrapper from '../components/PageWrapper'
 
 const Home: NextPage = () => {

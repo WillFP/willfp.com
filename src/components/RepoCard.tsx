@@ -23,7 +23,7 @@ const RepoCard: FC<{ repo: Repository }> = props => {
         <Link href={repo.html_url} passHref={true}>
             <div
                 className=
-                'rounded-md border-2 py-2 px-4 hover:border-teal-500 hover:scale-105 transition-all ease-out duration-150 hover:cursor-pointer'
+                'rounded-md border-2 drop py-2 px-4 hover:border-teal-500 hover:scale-105 transition-all ease-out duration-150 hover:cursor-pointer'
             >
                 <h1 className='font-sans text-xl font-bold'>{repo.full_name}</h1>
                 <h2 className='font-sans text-xs pb-2 font-extralight'>{repo.description}</h2>
