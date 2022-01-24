@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import axios, { AxiosResponse } from 'axios'
 import Link from 'next/link'
+import getColor from '../utils/githubcolors'
 
 export interface Repository {
     name: string,
@@ -15,22 +15,16 @@ export interface Repository {
     }
 }
 
-const colors = new Map<string, string>()
-
-axios.get('https://raw.githubusercontent.com/ozh/github-colors/master/colors.json')
-    .then((res: AxiosResponse) => {
-        Object.keys(res.data).forEach(key => {
-            colors.set(key, res.data[key].color)
-        })
-    })
-
 const RepoCard: FC<{ repo: Repository }> = props => {
     const repo = props.repo
-    const color = colors.get(repo.language)
+    const color = getColor(repo.language)
 
     return (
         <Link href={repo.html_url} passHref={true}>
-            <div className='rounded-md border-2 py-2 px-4 hover:scale-105 transition-all ease-out duration-150 hover:cursor-pointer'>
+            <div
+                className=
+                'rounded-md border-2 py-2 px-4 hover:border-teal-500 hover:scale-105 transition-all ease-out duration-150 hover:cursor-pointer'
+            >
                 <h1 className='font-sans text-xl font-bold'>{repo.full_name}</h1>
                 <h2 className='font-sans text-xs pb-2 font-extralight'>{repo.description}</h2>
                 {

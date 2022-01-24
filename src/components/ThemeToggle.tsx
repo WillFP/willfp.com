@@ -1,13 +1,13 @@
 import { useTheme } from "next-themes";
 import { FC } from "react";
 
-const ThemeToggle: FC = () => {
+const ThemeToggle: FC<{ className: string }> = props => {
     const { theme, setTheme } = useTheme()
     return (
         <button
             aria-label='Change Theme'
-            className='w-10 h-10 rounded'
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className={props.className}
         >
             {
                 <svg
@@ -15,7 +15,7 @@ const ThemeToggle: FC = () => {
                     viewBox="0 0 24 24"
                     fill="currentColor"
                     stroke="currentColor"
-                    className={"w-4 h-4 " + (theme === "dark" ? "text-teal-200" : "text-purple-500")}
+                    className={"active:rotate-180 duration-150 w-4 h-4 " + (theme === "dark" ? "text-yellow-200" : "text-purple-500")}
                 >
                     {theme === "dark" ? (
                         <path
