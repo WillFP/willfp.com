@@ -1,7 +1,8 @@
 {
-  "name": "willfp-frontend",
+  "name": "@willfp/frontend",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@willfp/common": "^0.0.0",
     "autoprefixer": "^10.4.2",
     "axios": "^0.25.0",
     "next": "12.0.8",
