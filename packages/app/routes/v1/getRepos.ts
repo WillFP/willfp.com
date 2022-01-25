@@ -62,10 +62,10 @@ export const getRepos = async (req: Request, res: Response) => {
             forks: repo.forks_count,
             owner: repo.owner.login,
             url: repo.html_url,
-            language: {
+            language: repo.language ? {
                 name: repo.language,
                 color: colors.get(repo.language)
-            }
+            } : undefined
         })
     }
 

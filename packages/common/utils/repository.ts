@@ -6,7 +6,7 @@ export type Repository = {
     forks: number,
     owner: string,
     url: string,
-    language: {
+    language?: {
         name: string,
         color?: string,
     },
