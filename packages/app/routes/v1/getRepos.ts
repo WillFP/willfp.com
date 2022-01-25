@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import axios, { AxiosResponse } from 'axios'
 import { Repository } from '@willfp/common/utils/repository'
 
+let cache: Repository[] = []
+
 interface RawRepository {
     name: string,
     description: string,
@@ -27,7 +29,16 @@ axios.get('https://raw.githubusercontent.com/ozh/github-colors/master/colors.jso
 export const getRepos = async (req: Request, res: Response) => {
     const raw: RawRepository[] = []
     const jank = ["orgs/Auxilor", "users/WillFP"]
-    
+
+    if (cache.length !== 0) {
+        res.status(200)
+            .send({
+                repos: cache
+            })
+
+        return
+    }
+
     for (const user of jank) {
         await axios.get(`https://api.github.com/${user}/repos`, {
             headers: {
@@ -58,9 +69,11 @@ export const getRepos = async (req: Request, res: Response) => {
         })
     }
 
-
+    cache = repositories
     res.status(200)
         .send({
             repos: repositories
         })
+
+    setTimeout(() => cache = [], 600_000)
 }

@@ -1,5 +1,7 @@
 import express from "express";
 import { router } from './routes/routes'
+const bodyParser = require('body-parser')
+
 require('dotenv').config()
 
 const PORT = process.env.PORT
@@ -7,6 +9,7 @@ const PORT = process.env.PORT
 const app = express();
 
 app.set("trust proxy", 1)
+app.use(bodyParser.json())
 
 app.use('/', router)
 
