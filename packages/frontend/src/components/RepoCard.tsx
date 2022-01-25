@@ -19,7 +19,7 @@ const RepoCard: FC<{ repo: Repository }> = props => {
                             <svg width='18' height='20'>
                                 <circle r='6' cx='6' cy='14' fill={repo.language.color} />
                             </svg>
-                            <h1 className='font-sans text-lg font-light'>{repo.language}</h1>
+                            <h1 className='font-sans text-lg font-light'>{repo.language.name}</h1>
                         </div>
                         : <div />
                 }

@@ -27,7 +27,7 @@ axios.get('https://raw.githubusercontent.com/ozh/github-colors/master/colors.jso
 export const getRepos = async (req: Request, res: Response) => {
     const raw: RawRepository[] = []
     const jank = ["orgs/Auxilor", "users/WillFP"]
-
+    
     for (const user of jank) {
         await axios.get(`https://api.github.com/${user}/repos`, {
             headers: {

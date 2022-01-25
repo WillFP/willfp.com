@@ -24,16 +24,12 @@ const Projects: NextPage<ProjectsProps> = (props: ProjectsProps) => {
 export async function getStaticProps(): Promise<GetStaticPropsResult<ProjectsProps>> {
   const repositories: Repository[] = []
 
-  console.log(`${process.env.API_ROUTE}`)
-  await axios.get(`${process.env.API_ROUTE}/v1/getRepos`, {
-    headers: {
-      'Authorization': `token ${env.GITHUB_TOKEN}`
-    }
-  }).then((response: AxiosResponse) => {
-    repositories.push(...response.data)
-  }).catch((error: any) => {
-    console.error(error)
-  })
+  await axios.get(`${process.env.API_ROUTE}/v1/getRepos`)
+    .then((response: AxiosResponse) => {
+      repositories.push(...response.data.repos)
+    }).catch((error: any) => {
+      console.error(error)
+    })
 
   return {
     props: {

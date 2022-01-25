@@ -12,9 +12,9 @@ package-lock.json
 coverage
 
 # production
-.env
-.env.production
-.next
+**/.env
+**/.env.production
+**/.next
 
 # misc
 .DS_Store
